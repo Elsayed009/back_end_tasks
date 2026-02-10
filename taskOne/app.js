@@ -49,6 +49,8 @@ try{
     });
 }catch (err){
     res.status(500).json({msg: err.message})
+    //here we replaced the string message "msg" with a dynmic msg "err.message"  
+    //that shows the error details in the #postman program and this before was a problem for us now we solve it
     console.log("Error",err.message)
 }
 })
@@ -70,10 +72,11 @@ app.get("/tasks", async (req, res)=>{
 
 
 
-//new we need the app to listen for the changes on the server so we can run it
+//now we need the app to listen for the changes on the server so we can run it
 app.listen(PORT, ()=>{
     console.log("server work on port: ", PORT)
 })
+
 
 
 
