@@ -1,3 +1,4 @@
+
  
  //first we call mongoose so we connect it with this file and use its features
  const mongoose = require("mongoose");
@@ -21,7 +22,6 @@ const taskSchema = new mongoose.Schema({
 
 const Task = mongoose.model("Task", taskSchema)
 module.exports= Task;
-
 
 
 
