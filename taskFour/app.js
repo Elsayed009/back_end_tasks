@@ -7,7 +7,6 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 6000;
 app.use(express.json());
 const URL = process.env.DB_URL;
-// const bcrypt = require("bcrypt") //later
 
 
 
@@ -24,39 +23,27 @@ async function dblinking() {
 
 dblinking()
 // require models
-const Auther = require("./models/Author");
-const Book = require("./models/Book");
+const Product = require("./models/Product");
 
-app.post("/auther", async (req, res)=>{
+
+app.post("/porduct", async (req, res)=>{
     try{
-        const {name} =req.body;
-        const auther = await Auther.create({
-            name
+        const {name,category,price} =req.body;
+        const porduct = await Product.create({
+            name,
+            category,
+            price
         })
         res.status(201).json({
-            msg: "auther created",
-             data: auther})
+            msg: "porduct created",
+             data: porduct})
     }catch (err){
         res.status(400).json({error: err.message})
         console.log(err.message)
     }
 });
 
-app.post("/book", async (req, res)=> {
-    try{
-        const {title, auther} = req.body;
-        const book = await Book.create({
-            title,
-            auther
-        });
-        res.status(201).json({msg: "book created", data: book});
-        
-
-    }catch (err){
-        res.status(400).json({error: err.message})
-        console.log(err.message);
-    }
-})
+// getting data
 
 app.get("/books", async (req, res)=>{
     try{ 
